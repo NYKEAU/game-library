@@ -3,7 +3,6 @@
 body {
     margin: 0;
     height: 100vh;
-    max-width: 1536px;
     font-family: 'Roboto', sans-serif;
 }
     
@@ -22,25 +21,18 @@ header {
     width: 10rem;
     border-radius: 8px;
     border: 0px;
-    box-shadow: -5px -5px 15px rgba(255, 255, 255, 1),
-                5px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s, box-shadow 0.5s ease;
 }
 
-.header_btn:active {
+.header_btn:active, .header_btn:hover:active, .header_btn:focus {
     box-shadow: inset -5px -5px 5px rgba(255, 255, 255, 0.5),
                 inset 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.header_btn:hover {
+.header_btn:hover:not(:focus) {
     transform: scale(1.1);
-}
-
-.header_btn:hover p{
-    font-weight: bold;
-}
-
-.header_btn:active p {
-    font-style: italic;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .game {
@@ -55,6 +47,9 @@ header {
 }
 
 .desc { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0 10%;
     height: 100%;
     overflow: auto;
@@ -67,8 +62,49 @@ header {
     font-size: 50px;
 }
 
-.img { 
+.img-hover {
+    overflow: hidden;
+    min-width: 25%;
+}
+  
+.img-hover img {
+    transition: transform 1s, filter 1s ease;
+    filter: blur(0) grayscale(0);
+}
+  
+.img-hover:hover img {
+    transform: scale(1.25);
+    border-radius: 2%;
+    filter: blur(2px) grayscale(100%);
+}
+
+.achat {
+    position: absolute;
+    color: white;
+    width: 100%;
+    background: rgba(0, 0, 0, .75);
+    border-top: white 2px solid;
+    border-bottom: white 2px solid;
+    opacity: 0;
+    transition: opacity 0.5s;
+    padding: 20px 0;
+}
+
+.achat p {
+    margin: 0 0 0 10px;
     display: inline-block;
+}
+
+.img-hover:hover .achat {
+    opacity: 1;
+}
+
+.img { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
     object-fit: cover;
     height: 100%;
     min-height: 250px;

@@ -11,7 +11,9 @@ let games = {
         dans la campagne.<br> </li><li><strong>Grimpez les échelons au classement</strong> : Affrontez d'autres joueuses et joueurs du monde entier dans différents modes de difficulté.<br>
         </li><li><strong>Facile à prendre en main, amusant à maîtriser</strong> : Tout le monde comprendra les mécaniques de base du jeu. Il est simple à prendre en main et accessible à tous.<br>
         </li><li><strong>Parfait pour garder la forme</strong> : Dansez et tranchez les notes, Beat Saber va vous faire bouger. </li></ul></p>`,
-        img: "IMG/beat-saber-vr.jpg"
+        img: "IMG/bs.webp",
+        link: "https://store.steampowered.com/app/620980/Beat_Saber/",
+        buyable: true
     },
     "apex" : {
         title: "Apex Legends",
@@ -30,7 +32,9 @@ let games = {
         : Apex Legends se déroule dans un univers incroyablement immersif où l'histoire ne cesse jamais d'évoluer, les cartes changent à chaque saison et des Légendes
         rejoignent régulièrement le combat. Marquez les Jeux Apex de votre empreinte avec une multitude de tenues distinctives et vivez une aventure inoubliable !
         </li></ul></p>`,
-        img: "IMG/apex.jpg"
+        img: "IMG/apex.jpg",
+        link: "https://store.steampowered.com/app/1172470/Apex_Legends/",
+        buyable: false
     },
     "rl" : {
         title: "Rocket League",
@@ -46,7 +50,9 @@ let games = {
         et votre Rocket Pass tiers sur toutes vos plateformes connectées&nbsp;!</li><li><strong>Boutique d'objets et plans</strong> : Créez la voiture qui vous ressemble grâce à des 
         options de personnalisation quasi illimitées&nbsp;! Obtenez des objets en jeu en remportant des défis, parcourez la boutique d'objets, ou utilisez des plans pour créer du 
         contenu premium pour votre voiture.</li></ul></p>`,
-        img: "IMG/rl.jpg"
+        img: "IMG/rl.jpg",
+        link: "https://store.epicgames.com/fr/p/rocket-league",
+        buyable: false
     },
     "exo" : {
         title: "Exo One",
@@ -58,7 +64,10 @@ let games = {
         jamais perdre de vue l’énigmatique rayon de lumière bleue qui brille à l’horizon.<br><br>Les graphismes aériens et envoûtants d'Exo One sont portés par une bande-son hypnotique 
         composée de riffs planants de guitare électrique et d’effets sonores d’un autre monde. Prenez les commandes de votre vaisseau dans le cadre du premier voyage de 
         l'humanité hors du système solaire, et partez pour un périple interplanétaire qui vous mènera aux confins du temps et de l'espace.</p>`,
-        img: "IMG/exo-one.jpg"
+        img: "IMG/exo-one.jpg",
+        link: "https://store.steampowered.com/app/773370/Exo_One/?l=french",
+        buyable: true
+
     },
     "mc" : {
         title: "Minecraft",
@@ -67,9 +76,8 @@ let games = {
         Gravissez des montagnes escarpées, découvrez des cavernes complexes et extrayez de grandes veines de minerai. Découvrez des biomes de cavernes luxuriantes et de spéléothème. 
         Illuminez votre monde avec des bougies pour montrer à quel point vous êtes un spéléologue et un montagnard avisé&nbsp;!
         
-        <h3>quaraktérystik</h3>
-        <ul>
-        <li><strong>Si vous en rêvez, vous pouvez le construire.</strong> Exploitez votre imagination et vos ressources illimitées avec le Mode Créatif.</li>
+        <h3>Caractéristiques</h3>
+        <ul><li><strong>Si vous en rêvez, vous pouvez le construire.</strong> Exploitez votre imagination et vos ressources illimitées avec le Mode Créatif.</li>
         <li><strong>Combattez des créatures, construisez un abri et explorez le paysage</strong> : tout cela en une seule journée de travail, tandis vous essayez de survivre et de prospérer en Mode Survie.</li>
         <li><strong>Vous pourrez explorer de nouveaux outils, lieux et espaces</strong> grâce à nos mises à jour régulières.</li>
         <li><strong>Jouez en multijoueur multiplateforme pour un maximum de huit joueurs</strong> sur Windows, PlayStation, Nintendo, Xbox et appareils mobiles. Minecraft pour Windows s'exécute également sur les appareils Windows Mixed&nbsp;Reality et Oculus&nbsp;Rift et prend en charge toutes les fonctionnalités.</li>
@@ -77,7 +85,9 @@ let games = {
         <li><strong>Découvrez les packs de skins, de textures et mash-up de la communauté !</strong> Pour en savoir plus, consultez <a target="_blank" href="https://www.minecraft.net/marketplace">minecraft.net/marketplace</a>. </li>
         <li><strong>Rejoignez des serveurs massivement multijoueur et jouez avec des milliers d'autres joueurs !</strong> Découvrez des mondes gigantesques qui fonctionnent grâce à la communauté, prenez part à des mini-jeux uniques et échangez dans des salons peuplés de nouveaux amis.</li>
         </ul></p>`,
-        img: "IMG/minecraft.webp"
+        img: "IMG/minecraft.webp",
+        link: "https://www.xbox.com/fr-fr/games/store/minecraft-for-windows-launcher/9n1bnzlgkg3c",
+        buyable: true
     }
 }
 
@@ -87,6 +97,19 @@ function showGame(target, game) {
         parent.querySelector('h2').innerHTML = dataGame.title
         parent.querySelector('p').innerHTML = dataGame.content
         parent.querySelector('img').src = dataGame.img
+        parent.querySelector('a.img').href = dataGame.link
+        let iconBuyable = "fa-cart-shopping"
+        let iconFree = "fa-gamepad"
+        if(dataGame.buyable) {
+            parent.querySelector('.achat p').innerHTML = "Acheter ce produit"
+            parent.querySelector('.achat i').classList.remove(iconFree)
+            parent.querySelector('.achat i').classList.add(iconBuyable)
+        }
+        else {
+            parent.querySelector('.achat p').innerHTML = "Voir ce produit"
+            parent.querySelector('.achat i').classList.remove(iconBuyable)
+            parent.querySelector('.achat i').classList.add(iconFree)
+        }
 }
 
 window.onload = function() {
